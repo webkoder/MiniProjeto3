@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">MiniProjeto3</string>
+    <string name="action_settings">Settings</string>
+
+    <string-array name="cargos">
+        <item>Programador</item>
+        <item>Designer</item>
+        <item>Gerente</item>
+        <item>Atendimento</item>
+    </string-array>
+
+</resources>

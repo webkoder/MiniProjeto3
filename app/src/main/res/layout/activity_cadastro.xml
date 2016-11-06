@@ -72,13 +72,15 @@
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:id="@+id/btnCancelar"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="Sair" />
 
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Salvar"
-            android:id="@+id/btnSalvar" />
+            android:id="@+id/btnSalvar"
+            android:onClick="Salvar" />
 
     </LinearLayout>
 

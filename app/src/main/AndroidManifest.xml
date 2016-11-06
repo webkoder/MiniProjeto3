@@ -21,6 +21,11 @@
         <activity android:name=".DetalheActivity" />
         <activity android:name=".CadastroActivity" />
         <activity android:name=".LucroActivity"></activity>
+
+        <meta-data android:name="DATABASE" android:value="miniprojeto3.db" />
+        <meta-data android:name="VERSION" android:value="2" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="br.com.webkoder.miniprojeto3" />
     </application>
 
 </manifest>

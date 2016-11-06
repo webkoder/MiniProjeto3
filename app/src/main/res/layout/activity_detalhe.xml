@@ -58,7 +58,8 @@
         android:id="@+id/btnEditar"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:onClick="Editar" />
 
     <Button
         android:layout_width="wrap_content"
@@ -67,7 +68,8 @@
         android:id="@+id/btnRemover"
         android:layout_alignParentTop="true"
         android:layout_toLeftOf="@+id/btnEditar"
-        android:layout_toStartOf="@+id/btnEditar" />
+        android:layout_toStartOf="@+id/btnEditar"
+        android:onClick="Remover" />
 
     <TextView
         android:layout_width="wrap_content"

@@ -44,7 +44,7 @@ public class FuncionarioAdapter extends ArrayAdapter<Funcionario> {
         Funcionario f = funcionarios.get(position);
         if(f != null){
             holder.nome.setText( f.getNome() );
-            holder.cpf.setText( f.getCpf() );
+            holder.cpf.setText( f.getCpfFormatado() );
         }
 
         return convertView;

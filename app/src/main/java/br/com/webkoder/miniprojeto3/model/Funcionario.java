@@ -8,6 +8,8 @@ import com.orm.dsl.Ignore;
 import com.orm.query.Condition;
 import com.orm.query.Select;
 
+import java.text.DecimalFormat;
+
 import br.com.webkoder.miniprojeto3.R;
 
 /**
@@ -51,6 +53,16 @@ public class Funcionario extends SugarRecord {
 
     public String getCpf() {
         return cpf;
+    }
+
+    public String getCpfFormatado() {
+        if(cpf == null){
+            return "CPF não cadastrado";
+        }
+        if(cpf.length() != 11){
+            return "CPF inválido";
+        }
+        return cpf.replaceAll("([0-9]{3})([0-9]{3})([0-9]{3})([0-9]{2})", "$1.$2.$3-$4");
     }
 
     public void setCpf(String cpf) {

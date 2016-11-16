@@ -9,6 +9,9 @@ import com.orm.query.Condition;
 import com.orm.query.Select;
 
 import java.text.DecimalFormat;
+import java.text.DecimalFormatSymbols;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 import br.com.webkoder.miniprojeto3.R;
 
@@ -73,6 +76,21 @@ public class Funcionario extends SugarRecord {
         return salario;
     }
 
+    private String monetario(Double valor){
+        valor = Math.round( (valor*100))/100.0d; // Arredonda para duas casas decimais
+        DecimalFormat df = (DecimalFormat) NumberFormat.getInstance(Locale.FRANCE);
+        DecimalFormatSymbols symbols = df.getDecimalFormatSymbols();
+        symbols.setGroupingSeparator('.');
+        symbols.setDecimalSeparator(',');
+        df.setDecimalFormatSymbols(symbols);
+
+        return df.format( valor );
+    }
+
+    public String getSalarioFormatado() {
+        return "R$ " + this.monetario(this.salario);
+    }
+
     public void setSalario(Double salario) {
         this.salario = salario;
     }
@@ -92,5 +110,10 @@ public class Funcionario extends SugarRecord {
 
         double bonus = lucro * (porcentagem / 100) / ncargo;
         return bonus;
+    }
+
+    public String getBonusFormatado(Context context){
+        double bonus = this.getBonus(context);
+        return "R$ " + String.format("%, .2f", bonus);
     }
 }

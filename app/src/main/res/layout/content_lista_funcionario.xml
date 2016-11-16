@@ -25,19 +25,25 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/edtPesquisar"
+        android:inputType="number"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_toLeftOf="@+id/btnPesquisar"
         android:layout_toStartOf="@+id/btnPesquisar" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Pesquisar"
+    <ImageButton
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:padding="7dp"
         android:id="@+id/btnPesquisar"
         android:layout_alignBottom="@+id/edtPesquisar"
         android:layout_alignRight="@+id/lstFuncionario"
         android:layout_alignEnd="@+id/lstFuncionario"
-        android:onClick="Pesquisar" />
+        android:onClick="Pesquisar"
+        android:background="@drawable/round_button"
+        android:src="@drawable/ico_pesquisar"
+        android:scaleType="fitXY"
+        />
 </RelativeLayout>
+

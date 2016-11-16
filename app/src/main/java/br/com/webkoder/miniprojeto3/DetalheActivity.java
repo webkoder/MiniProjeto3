@@ -1,6 +1,9 @@
 package br.com.webkoder.miniprojeto3;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.DialogFragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -32,9 +35,9 @@ public class DetalheActivity extends AppCompatActivity {
 
         lblNome.setText( funcionario.getNome() );
         lblCargo.setText( funcionario.getCargo() );
-        lblCPF.setText( funcionario.getCpf() );
-        lblSalario.setText( funcionario.getSalario().toString() );
-        lblBonus.setText( Double.toString( funcionario.getBonus(this) ) );
+        lblCPF.setText( funcionario.getCpfFormatado() );
+        lblSalario.setText( funcionario.getSalarioFormatado() );
+        lblBonus.setText( funcionario.getBonusFormatado(this) );
     }
 
     //Listeners
@@ -45,12 +48,29 @@ public class DetalheActivity extends AppCompatActivity {
         finish();
     }
 
-    public void Remover(View view){
-        // TODO adicionar um dialogBox aqui
-        // TODO deixar o botão vermelho
-        funcionario.delete();
+    public void Sair(View view){
         Intent intent = new Intent(this, ListaFuncionario.class);
         startActivity(intent);
         finish();
+    }
+
+    public void Remover(View view){
+        new AlertDialog.Builder(this)
+                .setTitle("Atenção!")
+                .setMessage("Deseja remover " + funcionario.getNome() + " ?")
+                .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener(){
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        funcionario.delete();
+                        Sair(null);
+                    }
+                })
+                .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener(){
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {}
+                })
+                .setIcon(android.R.drawable.ic_dialog_alert)
+                .show();
     }
 }

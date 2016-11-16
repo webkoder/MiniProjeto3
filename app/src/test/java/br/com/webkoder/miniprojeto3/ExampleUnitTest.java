@@ -37,4 +37,34 @@ public class ExampleUnitTest {
 
         assertEquals("CPF não cadastrado", formatado);
     }
+
+    @Test
+    public void SalarioFormatTeste() throws Exception {
+        Funcionario funcionario = new Funcionario();
+        // valor nulo
+        String formatado = funcionario.getSalarioFormatado();
+
+        assertEquals("R$ 0", formatado);
+
+        // número grande
+        double salario = 54321849.08;
+        funcionario.setSalario(salario);
+        formatado = funcionario.getSalarioFormatado();
+
+        assertEquals("R$ 54.321.849,08", formatado);
+
+        // número pequeno
+        salario = 849.08;
+        funcionario.setSalario(salario);
+        formatado = funcionario.getSalarioFormatado();
+
+        assertEquals("R$ 849,08", formatado);
+
+        // mais casas decimais
+        salario = 849.0891;
+        funcionario.setSalario(salario);
+        formatado = funcionario.getSalarioFormatado();
+
+        assertEquals("R$ 849,09", formatado);
+    }
 }

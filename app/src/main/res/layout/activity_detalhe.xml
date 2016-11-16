@@ -15,7 +15,7 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="Nome"
         android:id="@+id/lblNome"
-        android:layout_below="@+id/btnEditar"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -32,13 +32,35 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="CPF"
+        android:id="@+id/lblLCpf"
+        android:layout_below="@+id/lblCargo"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="CPF"
         android:id="@+id/lblCPF"
-        android:layout_below="@+id/lblCargo"
+        android:layout_below="@+id/lblLCpf"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="31dp" />
+        android:layout_alignParentStart="true" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Salario + bonus"
+        android:id="@+id/lblLSalario"
+        android:layout_below="@+id/lblCPF"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,30 +68,9 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Salário"
         android:id="@+id/lblSalario"
-        android:layout_below="@+id/lblCPF"
+        android:layout_below="@+id/lblLSalario"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="34dp" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Editar"
-        android:id="@+id/btnEditar"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:onClick="Editar" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Remover"
-        android:id="@+id/btnRemover"
-        android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/btnEditar"
-        android:layout_toStartOf="@+id/btnEditar"
-        android:onClick="Remover" />
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -80,4 +81,57 @@
         android:layout_below="@+id/lblSalario"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lblBonus"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="30dp"
+        android:id="@+id/linearLayout">
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Remover"
+            android:id="@+id/btnRemover"
+            android:onClick="Remover"
+            android:background="@drawable/danger_button"
+            android:layout_weight="1"
+            android:textColor="#FFFFFF"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:drawableLeft="@android:drawable/ic_menu_delete"/>
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Editar"
+            android:id="@+id/btnEditar"
+            android:onClick="Editar"
+            android:background="@drawable/success_button"
+            android:paddingLeft="25dp"
+            android:paddingRight="25dp"
+            android:textColor="#FFFFFF"
+            android:layout_weight="1"
+            android:drawableLeft="@android:drawable/ic_menu_edit" />
+    </LinearLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:id="@+id/btnVoltar"
+        android:onClick="Sair"
+        android:background="@drawable/danger_button"
+        android:layout_marginTop="26dp"
+        android:textColor="#FFFFFF"
+        android:paddingLeft="25dp"
+        android:paddingRight="25dp"
+        android:layout_below="@+id/linearLayout"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

@@ -20,7 +20,11 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtNome" />
+        android:id="@+id/edtNome"
+        android:lines="1"
+        android:singleLine="true"
+        android:imeOptions="actionNext"
+        android:inputType="textCapWords" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -46,19 +50,21 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtCpf" />
+        android:id="@+id/edtCpf"
+        android:inputType="number" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Salario"
+        android:text="Salario (R$)"
         android:id="@+id/textView3" />
 
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/edtSalario" />
+        android:id="@+id/edtSalario"
+        android:inputType="number" />
 
 
     <LinearLayout
@@ -68,18 +74,23 @@
         android:layout_gravity="right">
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancelar"
             android:id="@+id/btnCancelar"
-            android:layout_gravity="center_horizontal"
+            android:layout_weight="2"
+            android:textColor="@color/textoCor"
+            android:background="@drawable/danger_button"
             android:onClick="Sair" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Salvar"
             android:id="@+id/btnSalvar"
+            android:layout_weight="1"
+            android:textColor="@color/textoCor"
+            android:background="@drawable/success_button"
             android:onClick="Salvar" />
 
     </LinearLayout>

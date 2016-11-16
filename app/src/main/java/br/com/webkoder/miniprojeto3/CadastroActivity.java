@@ -3,18 +3,21 @@ package br.com.webkoder.miniprojeto3;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
+import br.com.webkoder.miniprojeto3.helper.Mask;
 import br.com.webkoder.miniprojeto3.model.Funcionario;
 
 public class CadastroActivity extends AppCompatActivity {
-    Funcionario funcionario;
-    EditText edtNome, edtCpf, edtSalario;
-    Spinner spnCargo;
+    private Funcionario funcionario;
+    private EditText edtNome, edtCpf, edtSalario;
+    private Spinner spnCargo;
+    private TextWatcher cpfMask, salarioMask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,9 +29,11 @@ public class CadastroActivity extends AppCompatActivity {
         edtCpf = (EditText) findViewById(R.id.edtCpf);
         edtSalario = (EditText) findViewById(R.id.edtSalario);
         spnCargo = (Spinner) findViewById(R.id.spnCargo);
+        cpfMask = Mask.insert("###.###.###-##", edtCpf);
+        salarioMask = Mask.monetario(edtSalario);
+        edtCpf.addTextChangedListener(cpfMask);
+        edtSalario.addTextChangedListener(salarioMask);
 
-
-        // TODO verificar intent
         Intent intent = this.getIntent();
         if(intent.hasExtra("FUNCIONARIOID")){
             funcionario = Funcionario.findById(Funcionario.class, intent.getLongExtra("FUNCIONARIOID", 0));
@@ -56,8 +61,8 @@ public class CadastroActivity extends AppCompatActivity {
     public void Salvar(View view){
         String msgerro = "";
         String nome = edtNome.getText().toString();
-        String cpf = edtCpf.getText().toString();
-        String salario = edtSalario.getText().toString();
+        String cpf = edtCpf.getText().toString().replaceAll("[.-]", "");
+        String salario = edtSalario.getText().toString().replaceAll("[.,-]", "");
 
         if(nome.equals(""))
             msgerro += "O nome do funcionário está vazio\r\n";

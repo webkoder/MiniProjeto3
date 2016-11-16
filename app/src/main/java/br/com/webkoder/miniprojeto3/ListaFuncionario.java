@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.ListViewCompat;
 import android.support.v7.widget.Toolbar;
+import android.text.TextWatcher;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -20,6 +21,7 @@ import com.orm.SugarContext;
 import java.util.List;
 
 import br.com.webkoder.miniprojeto3.adapter.FuncionarioAdapter;
+import br.com.webkoder.miniprojeto3.helper.Mask;
 import br.com.webkoder.miniprojeto3.model.Funcionario;
 
 public class ListaFuncionario extends AppCompatActivity {
@@ -58,13 +60,13 @@ public class ListaFuncionario extends AppCompatActivity {
 
         SugarContext.init(this);
 
-        // TODO Listar funcionarios
         funcionarios = Funcionario.listAll(Funcionario.class);
         lstFuncionarios = (ListView) findViewById(R.id.lstFuncionario);
         lstFuncionarios.setAdapter(new FuncionarioAdapter(this, 0, funcionarios));
         lstFuncionarios.setOnItemClickListener(new lstFuncionariosOnItemListener());
-
         edtPesquisa = (EditText) findViewById(R.id.edtPesquisar);
+        TextWatcher maskPesquisa = Mask.insert("###.###.###-##", edtPesquisa);
+        edtPesquisa.addTextChangedListener(maskPesquisa);
 
        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
